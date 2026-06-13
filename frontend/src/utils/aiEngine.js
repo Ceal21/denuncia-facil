@@ -171,8 +171,12 @@ export function extractDataFromMessage(message, stage, currentDraft) {
     case 'ask_incident_place': {
       const dist = findDistrict(msg);
       if (dist) draft.datos_hecho.distrito_hecho = dist;
-      // Always store the address text; don't overwrite a district we already found
-      draft.datos_hecho.direccion_hecho = msg;
+      // Only store as address if the message contains more than the district name
+      // (street keyword, landmark, or number signals an actual address)
+      const hasAddressContent = /\b(av(enida)?|jr|jir[oó]n|calle|ca\.|psje|pasaje|parque|plaza|cdra|cuadra|esquina|frente|cerca|altura|km|\d+)\b/i.test(msg);
+      if (hasAddressContent) {
+        draft.datos_hecho.direccion_hecho = msg;
+      }
       draft.datos_hecho.departamento_hecho = 'Lima';
       draft.datos_hecho.provincia_hecho = 'Lima';
       break;
@@ -290,7 +294,9 @@ export function generateAIResponse(chatId, userMessage, updatedDraft) {
     }
 
     case 'ask_incident_place': {
-      if (h?.direccion_hecho && !h?.distrito_hecho) {
+      if (h?.distrito_hecho && !h?.direccion_hecho) {
+        text = `Anotado en **${h.distrito_hecho}**. ¿Recuerdas la dirección exacta o alguna referencia cercana? Por ejemplo: nombre de la calle, avenida, parque o local próximo.`;
+      } else if (h?.direccion_hecho && !h?.distrito_hecho) {
         text = `Entendido. ¿En qué **distrito** de Lima o Callao ocurrió eso? (por ejemplo: Miraflores, San Borja, Callao...)`;
       } else {
         text = `¿En qué **distrito** de Lima o Callao ocurrió el hurto o robo? ¿Recuerdas una dirección o zona aproximada?`;

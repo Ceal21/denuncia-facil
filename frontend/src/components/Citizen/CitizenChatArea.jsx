@@ -69,7 +69,7 @@ function Message({ msg, isOwn }) {
   );
 }
 
-export default function CitizenChatArea() {
+export default function CitizenChatArea({ onBack }) {
   const { currentUser, chats, messages, selectedChatId, sendMessage, typingChats } = useApp();
   const [inputValue, setInputValue] = useState('');
   const messagesEndRef = useRef(null);
@@ -122,6 +122,11 @@ export default function CitizenChatArea() {
   return (
     <div className={styles.chatArea}>
       <header className={styles.chatHeader}>
+        <button className={styles.backBtn} onClick={onBack} aria-label="Volver">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M19 12H5M12 5l-7 7 7 7" />
+          </svg>
+        </button>
         <div className={styles.headerLeft}>
           <div className={styles.headerIcon}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

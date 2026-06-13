@@ -8,6 +8,29 @@
   min-width: 0;
 }
 
+.backBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 6px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.12s;
+}
+
+.backBtn:hover {
+  background: var(--bg);
+}
+
+.backBtn svg {
+  width: 20px;
+  height: 20px;
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -313,4 +336,19 @@
 
 .metaDot {
   color: var(--text-muted);
+}
+
+@media (max-width: 640px) {
+  .container {
+    height: 100%;
+  }
+
+  .backBtn {
+    display: flex;
+  }
+
+  .body {
+    padding: 14px;
+    gap: 16px;
+  }
 }

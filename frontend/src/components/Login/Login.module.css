@@ -314,3 +314,21 @@
   text-align: center;
   line-height: 1.6;
 }
+
+@media (max-width: 640px) {
+  .card {
+    padding: 28px 20px 24px;
+    border-radius: 16px;
+    margin: 16px;
+    width: calc(100% - 32px);
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .logoArea {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+}

@@ -164,7 +164,7 @@ function DataRow({ label, value }) {
   );
 }
 
-export default function OfficerChatArea() {
+export default function OfficerChatArea({ onBack }) {
   const { currentUser, chats, messages, selectedChatId, claimChat, updateChatStatus, closeWithReason } = useApp();
   const [showResumen, setShowResumen] = useState(true);
   const [showCloseDialog, setShowCloseDialog] = useState(false);
@@ -195,6 +195,11 @@ export default function OfficerChatArea() {
   if (!selectedChatId) {
     return (
       <div className={styles.emptyState}>
+        <button className={`${styles.backBtn} ${styles.emptyBack}`} onClick={onBack} aria-label="Volver">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M19 12H5M12 5l-7 7 7 7" />
+          </svg>
+        </button>
         <div className={styles.emptyIcon}>
           <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M42 32a4 4 0 0 1-4 4H14l-8 8V12a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v20z" />
@@ -213,6 +218,11 @@ export default function OfficerChatArea() {
     <div className={styles.container}>
       <div className={styles.chatArea}>
         <header className={styles.chatHeader}>
+          <button className={styles.backBtn} onClick={onBack} aria-label="Volver">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M19 12H5M12 5l-7 7 7 7" />
+            </svg>
+          </button>
           <div className={styles.headerLeft}>
             <div className={styles.headerIcon}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

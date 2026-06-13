@@ -4,3 +4,22 @@
   overflow: hidden;
   background: var(--bg);
 }
+
+.panel {
+  display: contents;
+}
+
+@media (max-width: 640px) {
+  .panel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .panelHidden {
+    display: none;
+  }
+}

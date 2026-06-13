@@ -7,6 +7,59 @@
   background: var(--bg);
 }
 
+.backBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 6px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.12s;
+}
+
+.backBtn:hover {
+  background: var(--bg);
+}
+
+.backBtn svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 640px) {
+  .chatArea {
+    height: 100%;
+  }
+
+  .backBtn {
+    display: flex;
+  }
+
+  .msgRow {
+    max-width: 90%;
+  }
+
+  .messages {
+    padding: 14px 10px;
+  }
+
+  .inputArea {
+    padding: 10px 10px 14px;
+  }
+
+  .progressBar {
+    width: 80px;
+  }
+
+  .officerTag {
+    display: none;
+  }
+}
+
 .emptyState {
   flex: 1;
   display: flex;

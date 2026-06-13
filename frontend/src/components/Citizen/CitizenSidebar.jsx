@@ -4,7 +4,7 @@ import StatusBadge from '../shared/StatusBadge';
 import { formatTimestamp, getInitials } from '../../utils/helpers';
 import styles from './CitizenSidebar.module.css';
 
-export default function CitizenSidebar() {
+export default function CitizenSidebar({ onSelect }) {
   const { currentUser, chats, selectedChatId, selectChat, createNewChat, logout } = useApp();
 
   const myChatIds = Object.keys(chats).filter(
@@ -66,7 +66,7 @@ export default function CitizenSidebar() {
             <button
               key={chat.chatId}
               className={`${styles.chatItem} ${isActive ? styles.active : ''}`}
-              onClick={() => selectChat(chat.chatId)}
+              onClick={() => { selectChat(chat.chatId); onSelect?.(); }}
             >
               <div className={styles.chatIcon}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

@@ -4,7 +4,7 @@ import StatusBadge from '../shared/StatusBadge';
 import { formatTimestamp, getInitials } from '../../utils/helpers';
 import styles from './OfficerSidebar.module.css';
 
-export default function OfficerSidebar({ activeView = 'denuncias', onViewChange }) {
+export default function OfficerSidebar({ activeView = 'denuncias', onViewChange, onSelect }) {
   const { currentUser, chats, selectedChatId, selectChat, logout } = useApp();
   const [activeTab, setActiveTab] = useState('queue');
   const [searchQuery, setSearchQuery] = useState('');
@@ -155,7 +155,7 @@ export default function OfficerSidebar({ activeView = 'denuncias', onViewChange 
             <button
               key={chat.chatId}
               className={`${styles.chatItem} ${isActive ? styles.active : ''}`}
-              onClick={() => selectChat(chat.chatId)}
+              onClick={() => { selectChat(chat.chatId); onSelect?.(); }}
             >
               <div className={styles.chatLeft}>
                 <div className={styles.citizenAvatar}>{getInitials(citizenName)}</div>
