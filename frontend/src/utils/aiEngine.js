@@ -224,7 +224,8 @@ export function extractDataFromMessage(message, stage, currentDraft) {
     }
 
     case 'confirm_comisaria': {
-      if (/\b(s[ií]|ok|bien|correcto|claro|acepto|de acuerdo|confirm|afirm|exacto)\b/i.test(norm)) {
+      const isYes = /\b(s[ií]|ok|bien|correcto|claro|acepto|de acuerdo|confirm|afirm|exacto)\b/i.test(norm);
+      if (isYes) {
         draft.datos_hecho.comisaria_confirmed = true;
         const distHecho = draft.datos_hecho.distrito_hecho || '';
         const comisaria = COMISARIAS[distHecho] || {
@@ -233,6 +234,20 @@ export function extractDataFromMessage(message, stage, currentDraft) {
         };
         draft.datos_hecho.comisaria_nombre = comisaria.nombre;
         draft.datos_hecho.comisaria_direccion = comisaria.direccion;
+      } else {
+        // User is correcting — try to extract a new district from the message
+        const newDistrict = findDistrict(msg);
+        if (newDistrict) {
+          draft.datos_hecho.distrito_hecho = newDistrict;
+          // keep existing direccion_hecho; only the district changed
+        } else {
+          // No district found — clear location so ask_incident_place is triggered
+          draft.datos_hecho.distrito_hecho = null;
+          draft.datos_hecho.direccion_hecho = null;
+        }
+        draft.datos_hecho.comisaria_nombre = null;
+        draft.datos_hecho.comisaria_direccion = null;
+        draft.datos_hecho.comisaria_confirmed = false;
       }
       break;
     }

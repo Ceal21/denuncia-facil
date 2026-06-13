@@ -4,6 +4,17 @@ Chatbot de denuncias policiales para Lima y Callao. Este repositorio contiene
 un prototipo funcional del sistema: todo corre en el navegador, sin conexión a
 servidores reales. Los datos se reinician cada vez que se recarga la página.
 
+## Acceso rápido
+
+Puedes probar el prototipo directamente en el navegador, sin instalar nada:
+
+| Vista | URL |
+|---|---|
+| Ciudadano | [https://denuncia-facil.vercel.app/](https://denuncia-facil.vercel.app/) |
+| Oficial PNP | [https://denuncia-facil.vercel.app/#/oficiales](https://denuncia-facil.vercel.app/#/oficiales) |
+
+Si prefieres correrlo en tu propia computadora, sigue los pasos de instalación más abajo.
+
 ---
 
 ## Requisitos previos
