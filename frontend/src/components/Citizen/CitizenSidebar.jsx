@@ -39,7 +39,7 @@ export default function CitizenSidebar({ onSelect }) {
 
       <button
         className={styles.newBtn}
-        onClick={createNewChat}
+        onClick={() => { createNewChat(); onSelect?.(); }}
         disabled={hasDraft}
         title={hasDraft ? 'Ya tienes una denuncia en borrador' : undefined}
       >
