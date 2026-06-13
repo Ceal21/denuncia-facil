@@ -1,0 +1,382 @@
+.chatArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.emptyState {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--text-secondary);
+  padding: 40px;
+}
+
+.emptyIcon {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  color: #9ca3af;
+}
+
+.emptyIcon svg {
+  width: 36px;
+  height: 36px;
+}
+
+.emptyTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.emptyDesc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 300px;
+  line-height: 1.6;
+}
+
+.chatHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  gap: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
+}
+
+.headerIcon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--blue-light);
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.headerIcon svg {
+  width: 19px;
+  height: 19px;
+}
+
+.headerInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chatIdLabel {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.3px;
+}
+
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.progressBar {
+  width: 120px;
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue-mid), var(--blue));
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.progressLabel {
+  font-size: 11px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.officerTag {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: #7c3aed;
+  background: #f5f3ff;
+  border: 1px solid #e9d5ff;
+  border-radius: 20px;
+  padding: 4px 10px;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+.confirmBanner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #fffbeb;
+  border-bottom: 1px solid #fde68a;
+  font-size: 13px;
+  color: #92400e;
+  flex-shrink: 0;
+}
+
+.confirmBanner svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: #d97706;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dateSeparator {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 6px;
+}
+
+.dateSeparatorLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding: 3px 12px;
+  letter-spacing: 0.2px;
+}
+
+.systemMsg {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.systemMsg span {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text-secondary);
+  font-size: 11.5px;
+  padding: 5px 14px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 80%;
+  line-height: 1.5;
+}
+
+.msgRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  max-width: 78%;
+}
+
+.msgRow.own {
+  flex-direction: row-reverse;
+  align-self: flex-end;
+}
+
+.msgRow.other {
+  align-self: flex-start;
+}
+
+.aiAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: white;
+}
+
+.aiAvatar svg {
+  width: 14px;
+  height: 14px;
+}
+
+.bubble {
+  max-width: 100%;
+  border-radius: 18px;
+  padding: 10px 14px;
+  word-break: break-word;
+  line-height: 1.55;
+}
+
+.bubbleOwn {
+  background: var(--blue);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.bubbleOther {
+  background: var(--msg-ai);
+  color: var(--text-primary);
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.bubbleContent {
+  font-size: 13.5px;
+}
+
+.bubbleContent strong {
+  font-weight: 600;
+}
+
+.msgDivider {
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  margin: 4px 0;
+}
+
+.bubbleMeta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: flex-end;
+  margin-top: 3px;
+}
+
+.bubbleTime {
+  font-size: 10.5px;
+  opacity: 0.6;
+}
+
+.bubbleOwn .bubbleTime { color: rgba(255,255,255,0.75); }
+.bubbleOther .bubbleTime { color: var(--text-muted); }
+
+.seenTick {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: -1px;
+}
+
+.inputArea {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 12px 16px 16px;
+  background: white;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.input {
+  flex: 1;
+  resize: none;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 22px;
+  padding: 10px 16px;
+  font-size: 13.5px;
+  color: var(--text-primary);
+  background: #f9fafb;
+  line-height: 1.5;
+  max-height: 120px;
+  transition: border-color 0.15s;
+}
+
+.input:focus {
+  border-color: var(--blue-mid);
+  background: white;
+}
+
+.input::placeholder { color: var(--text-muted); }
+
+.sendBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: #e5e7eb;
+  color: #9ca3af;
+  transition: all 0.15s;
+}
+
+.sendBtn.sendActive {
+  background: var(--blue);
+  color: white;
+  box-shadow: 0 3px 10px rgba(0, 53, 128, 0.35);
+}
+
+.sendBtn.sendActive:hover {
+  background: var(--blue-mid);
+  transform: scale(1.05);
+}
+
+.sendBtn svg {
+  width: 17px;
+  height: 17px;
+}
+
+.readonlyBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  background: #f9fafb;
+  border-top: 1px solid var(--border);
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  font-style: italic;
+}
+
+.readonlyBar svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
